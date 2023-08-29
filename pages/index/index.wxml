@@ -1,0 +1,42 @@
+
+<view class="container">
+  <view class="row">
+    <view class="column">
+      <block wx:for="{{currentQuestionPairs}}" wx:key="key">
+        <view
+          class="word {{selectedRussianIndex == index ? 'selected' : ''}}"
+          bind:tap="selectRussianWord"
+          data-index="{{index}}"
+        >
+          {{item}}
+        </view>
+      </block>
+    </view>
+    <view class="column">
+      <block wx:for="{{shuffledChineseWords}}" wx:key="index">
+        <view
+          class="word {{selectedChineseIndex == index ? 'selected' : ''}}"
+          bind:tap="selectChineseWord"
+          data-index="{{index}}"
+					data-item="{{item}}"
+        >
+          {{item}}
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="navigation">
+    <!-- 上一题 -->
+    <image
+      class="arrow-left"
+      src="/images/arrow-left.png"
+      bind:tap="showPreviousQuestion"
+    ></image>
+    <!-- 下一题 -->
+    <image
+      class="arrow-right"
+      src="/images/arrow-right.png"
+      bind:tap="showNextQuestion"
+    ></image>
+  </view>
+</view>
